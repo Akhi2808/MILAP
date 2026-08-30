@@ -1,0 +1,280 @@
+{
+  "info": {
+    "name": "MILAP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "milap-api-collection"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" }
+  ],
+  "item": [
+    {
+      "name": "Ping",
+      "item": [
+        { "name": "Ping", "request": { "method": "GET", "url": "{{baseUrl}}/api/ping" } }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        { "name": "List Customers", "request": { "method": "GET", "url": "{{baseUrl}}/api/customers" } },
+        { "name": "Get Customer", "request": { "method": "GET", "url": "{{baseUrl}}/api/customers/1" } },
+        { "name": "Get Customer Summary", "request": { "method": "GET", "url": "{{baseUrl}}/api/customers/1/summary" } },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/customers",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ABC Engineering Pvt Ltd\",\n  \"industry\": \"Auto Components\",\n  \"contactPerson\": \"Suresh Rao\",\n  \"email\": \"suresh@abcengineering.test\",\n  \"phone\": \"9876543210\",\n  \"address\": \"Hyderabad, India\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/customers/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ABC Engineering Pvt Ltd\",\n  \"industry\": \"Auto Components\",\n  \"contactPerson\": \"Suresh Rao\",\n  \"email\": \"suresh@abcengineering.test\",\n  \"phone\": \"9876543210\",\n  \"address\": \"Hyderabad, India\"\n}"
+            }
+          }
+        },
+        { "name": "Delete Customer", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/customers/1" } }
+      ]
+    },
+    {
+      "name": "Engineers",
+      "item": [
+        { "name": "List Engineers", "request": { "method": "GET", "url": "{{baseUrl}}/api/engineers" } },
+        { "name": "Get Engineer", "request": { "method": "GET", "url": "{{baseUrl}}/api/engineers/1" } },
+        {
+          "name": "Create Engineer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/engineers",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rajesh Kumar\",\n  \"role\": \"Service Engineer\",\n  \"email\": \"rajesh@milap.test\",\n  \"phone\": \"9988776655\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Engineer",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/engineers/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rajesh Kumar\",\n  \"role\": \"Senior Service Engineer\",\n  \"email\": \"rajesh@milap.test\",\n  \"phone\": \"9988776655\"\n}"
+            }
+          }
+        },
+        { "name": "Delete Engineer", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/engineers/1" } }
+      ]
+    },
+    {
+      "name": "Enquiries",
+      "item": [
+        { "name": "List Enquiries", "request": { "method": "GET", "url": "{{baseUrl}}/api/enquiries" } },
+        { "name": "Get Enquiry", "request": { "method": "GET", "url": "{{baseUrl}}/api/enquiries/1" } },
+        { "name": "Get Enquiries by Customer", "request": { "method": "GET", "url": "{{baseUrl}}/api/enquiries/customer/1" } },
+        {
+          "name": "Create Enquiry",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/enquiries?customerId=1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requirementText\": \"We require 2 units of CNC turning machine suitable for EN8 material, max turning dia 250 mm, length 500 mm.\",\n  \"product\": \"CNC Turning Machine\",\n  \"material\": \"EN8\",\n  \"quantity\": 2,\n  \"keyParam1\": \"250 mm max diameter\",\n  \"keyParam2\": \"500 mm length\",\n  \"requiredDelivery\": \"12 weeks\",\n  \"source\": \"EMAIL_PDF\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Enquiry",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/enquiries/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requirementText\": \"Updated requirement text\",\n  \"product\": \"CNC Turning Machine\",\n  \"material\": \"EN8\",\n  \"quantity\": 3,\n  \"keyParam1\": \"250 mm max diameter\",\n  \"keyParam2\": \"500 mm length\",\n  \"requiredDelivery\": \"10 weeks\",\n  \"source\": \"WHATSAPP\"\n}"
+            }
+          }
+        },
+        { "name": "Update Enquiry Status", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/enquiries/1/status?status=TECHNICAL_REVIEW" } },
+        { "name": "Delete Enquiry", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/enquiries/1" } }
+      ]
+    },
+    {
+      "name": "Quotations",
+      "item": [
+        { "name": "List Quotations", "request": { "method": "GET", "url": "{{baseUrl}}/api/quotations" } },
+        { "name": "Get Quotation", "request": { "method": "GET", "url": "{{baseUrl}}/api/quotations/1" } },
+        { "name": "Get Quotations by Customer", "request": { "method": "GET", "url": "{{baseUrl}}/api/quotations/customer/1" } },
+        { "name": "Get Quotations by Enquiry", "request": { "method": "GET", "url": "{{baseUrl}}/api/quotations/enquiry/1" } },
+        {
+          "name": "Create Quotation From Enquiry",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/quotations/from-enquiry/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quotation\": {\n    \"product\": \"CNC Turning Machine XT250\",\n    \"quantity\": 2,\n    \"basePrice\": 4900000,\n    \"deliveryEstimate\": \"10-12 weeks\",\n    \"paymentTerms\": \"30/60/10\",\n    \"warrantyMonths\": 12\n  },\n  \"lineItems\": [\n    { \"itemName\": \"XT250 Base Machine\", \"quantity\": 2, \"amount\": 4900000 },\n    { \"itemName\": \"Chip Conveyor\", \"quantity\": 2, \"amount\": 240000 },\n    { \"itemName\": \"Tool Package\", \"quantity\": 2, \"amount\": 170000 }\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Quotation",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/quotations/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"CNC Turning Machine XT250\",\n  \"quantity\": 2,\n  \"basePrice\": 4900000,\n  \"deliveryEstimate\": \"10-12 weeks\",\n  \"paymentTerms\": \"30/60/10\",\n  \"warrantyMonths\": 12\n}"
+            }
+          }
+        },
+        {
+          "name": "Add Line Item",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/quotations/1/line-items",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemName\": \"Installation & Training\",\n  \"quantity\": 1,\n  \"amount\": 0\n}"
+            }
+          }
+        },
+        { "name": "Remove Line Item", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/quotations/1/line-items/1" } },
+        { "name": "Mark Sent", "request": { "method": "POST", "url": "{{baseUrl}}/api/quotations/1/send" } },
+        { "name": "Approve Quotation", "request": { "method": "POST", "url": "{{baseUrl}}/api/quotations/1/approve" } },
+        { "name": "Delete Quotation", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/quotations/1" } }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        { "name": "List Orders", "request": { "method": "GET", "url": "{{baseUrl}}/api/orders" } },
+        { "name": "Get Order", "request": { "method": "GET", "url": "{{baseUrl}}/api/orders/1" } },
+        { "name": "Get Orders by Customer", "request": { "method": "GET", "url": "{{baseUrl}}/api/orders/customer/1" } },
+        { "name": "Convert Quotation to Order", "request": { "method": "POST", "url": "{{baseUrl}}/api/orders/from-quotation/1" } },
+        { "name": "Advance Stage", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/orders/1/stage?stage=ENGINEERING" } },
+        { "name": "Update Progress / Risk", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/orders/1/progress?engineeringProgressPercent=100&procurementProgressPercent=82&riskNotes=Critical part delayed" } },
+        { "name": "Delete Order", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/orders/1" } }
+      ]
+    },
+    {
+      "name": "Assets",
+      "item": [
+        { "name": "List Assets", "request": { "method": "GET", "url": "{{baseUrl}}/api/assets" } },
+        { "name": "Get Asset", "request": { "method": "GET", "url": "{{baseUrl}}/api/assets/1" } },
+        { "name": "Get Assets by Customer", "request": { "method": "GET", "url": "{{baseUrl}}/api/assets/customer/1" } },
+        {
+          "name": "Create Asset",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/assets?customerId=1&orderId=1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"XT250 CNC Machine\",\n  \"serialNumber\": \"DEMO-2026-0018\",\n  \"installedDate\": \"2026-01-12\",\n  \"warrantyExpiry\": \"2027-01-12\",\n  \"nextServiceDate\": \"2026-11-10\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Asset",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/assets/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"XT250 CNC Machine\",\n  \"serialNumber\": \"DEMO-2026-0018\",\n  \"installedDate\": \"2026-01-12\",\n  \"warrantyExpiry\": \"2027-01-12\",\n  \"nextServiceDate\": \"2026-09-01\"\n}"
+            }
+          }
+        },
+        { "name": "Update Asset Status", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/assets/1/status?status=MAINTENANCE_DUE" } },
+        { "name": "Delete Asset", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/assets/1" } }
+      ]
+    },
+    {
+      "name": "Service Tickets",
+      "item": [
+        { "name": "List Service Tickets", "request": { "method": "GET", "url": "{{baseUrl}}/api/service-tickets" } },
+        { "name": "Get Service Ticket", "request": { "method": "GET", "url": "{{baseUrl}}/api/service-tickets/1" } },
+        { "name": "Get Tickets by Customer", "request": { "method": "GET", "url": "{{baseUrl}}/api/service-tickets/customer/1" } },
+        { "name": "Get Tickets by Asset", "request": { "method": "GET", "url": "{{baseUrl}}/api/service-tickets/asset/1" } },
+        {
+          "name": "Create Service Ticket",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/service-tickets?customerId=1&assetId=1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issueDescription\": \"Abnormal sound during operation\",\n  \"priority\": \"HIGH\"\n}"
+            }
+          }
+        },
+        { "name": "Assign Engineer", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/service-tickets/1/assign/1" } },
+        { "name": "Start Service", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/service-tickets/1/start" } },
+        { "name": "Complete Service", "request": { "method": "PATCH", "url": "{{baseUrl}}/api/service-tickets/1/complete" } },
+        { "name": "Delete Service Ticket", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/service-tickets/1" } }
+      ]
+    },
+    {
+      "name": "Knowledge Documents",
+      "item": [
+        { "name": "List Documents", "request": { "method": "GET", "url": "{{baseUrl}}/api/documents" } },
+        {
+          "name": "Upload Document",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/documents",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": "" }
+              ]
+            }
+          }
+        },
+        { "name": "Delete Document", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/documents/1" } }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        { "name": "Get Summary", "request": { "method": "GET", "url": "{{baseUrl}}/api/dashboard/summary" } }
+      ]
+    },
+    {
+      "name": "Ask AI",
+      "item": [
+        {
+          "name": "Ask",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/api/ai/ask",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Which quotations have not been followed up for 7 days?\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
