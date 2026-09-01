@@ -41,7 +41,7 @@ function Shell() {
 
 function AppInner() {
   const { loggedIn } = useApp();
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   if (!loggedIn) {
     return (

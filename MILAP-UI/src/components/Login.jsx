@@ -22,12 +22,12 @@ export default function Login({ onBack }) {
     <div className="login-wrap">
       <div className="login-panel">
         <div className="login-visual">
-          <img src={logoBrand} alt="MILAP — Multi-Industry Linkage & Automation Platform" />
+          <img className="login-visual-logo" src={logoBrand} alt="MILAP — Multi-Industry Linkage & Automation Platform" />
         </div>
 
         <div className="login-form-side">
           <div className="login-form-card">
-            {onBack && <button type="button" className="login-back" onClick={onBack}>← Back to home</button>}
+            {onBack && <button type="button" className="login-about" onClick={onBack}>What is MILAP?</button>}
             <div className="login-brandmark">MILAP</div>
             <h2>Sign in to your workspace</h2>
             <div className="sub">Enter your credentials to access enquiries, quotations, orders and service.</div>
