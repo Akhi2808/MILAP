@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: milap-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: milap
+      MYSQL_USER: milap
+      MYSQL_PASSWORD: milap
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - milap-mysql-data:/var/lib/mysql
+
+volumes:
+  milap-mysql-data:
