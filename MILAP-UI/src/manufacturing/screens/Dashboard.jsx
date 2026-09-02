@@ -1,5 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext.jsx';
+import { IconEnquiries, IconQuotation, IconOrders, IconService, IconAskAI, IconCustomers, IconPlug } from '../../components/icons.jsx';
 
 export default function Dashboard() {
   const { go, showToast, dashboardSummary, orders, loading, loadError } = useApp();
@@ -31,10 +32,10 @@ export default function Dashboard() {
       {loadError && <div className="card callout" style={{ marginBottom: 14 }}>{loadError}</div>}
 
       <div className="grid kpis">
-        <div className="card kpi"><div className="label">New Enquiries</div><div className="value">{newEnquiries}</div></div>
-        <div className="card kpi"><div className="label">Pending Quotations</div><div className="value">{pendingQuotations}</div></div>
-        <div className="card kpi"><div className="label">Active Orders / Projects</div><div className="value">{activeOrders}</div></div>
-        <div className="card kpi"><div className="label">Open Service Tickets</div><div className="value">{openServiceTickets}</div><div className="trend warn">{highPriorityOpenTickets} high priority</div></div>
+        <div className="card kpi"><div className="kpi-icon blue"><IconEnquiries /></div><div className="label">New Enquiries</div><div className="value">{newEnquiries}</div></div>
+        <div className="card kpi"><div className="kpi-icon purple"><IconQuotation /></div><div className="label">Pending Quotations</div><div className="value">{pendingQuotations}</div></div>
+        <div className="card kpi"><div className="kpi-icon teal"><IconOrders /></div><div className="label">Active Orders / Projects</div><div className="value">{activeOrders}</div></div>
+        <div className="card kpi"><div className="kpi-icon orange"><IconService /></div><div className="label">Open Service Tickets</div><div className="value">{openServiceTickets}</div><div className="trend warn">{highPriorityOpenTickets} high priority</div></div>
       </div>
 
       <div className="grid two" style={{ marginTop: 14 }}>
@@ -71,12 +72,12 @@ export default function Dashboard() {
           <div><h2>What MILAP can solve</h2><div className="sub">Choose a business problem and jump directly to the relevant workflow.</div></div>
         </div>
         <div className="action-panel">
-          <div className="action-card" onClick={() => go('enquiries')}><b>RFQ & Quotation Automation</b><div className="statusline">Capture requirements and build compliant quotations</div></div>
-          <div className="action-card" onClick={() => go('orders')}><b>Order & Project Visibility</b><div className="statusline">Track engineering, procurement, production and delivery risks</div></div>
-          <div className="action-card" onClick={() => go('service')}><b>Service & AMC Automation</b><div className="statusline">Installed base, service history, engineer assignment</div></div>
-          <div className="action-card" onClick={() => go('askai')}><b>AI Knowledge Assistant</b><div className="statusline">Search manuals, SOPs, catalogues and warranty information</div></div>
-          <div className="action-card" onClick={() => go('customers')}><b>Customer 360</b><div className="statusline">Accounts, open enquiries, active orders and installed base</div></div>
-          <div className="action-card" onClick={() => showToast('Integration demo: ERP, Tally, CRM, email and Excel connectors can be added during a pilot.')}><b>ERP / Excel Integration</b><div className="statusline">Keep existing systems and automate the gaps around them</div></div>
+          <div className="action-card" onClick={() => go('enquiries')}><div className="action-card-icon blue"><IconQuotation /></div><b>RFQ & Quotation Automation</b><div className="statusline">Capture requirements and build compliant quotations</div></div>
+          <div className="action-card" onClick={() => go('orders')}><div className="action-card-icon teal"><IconOrders /></div><b>Order & Project Visibility</b><div className="statusline">Track engineering, procurement, production and delivery risks</div></div>
+          <div className="action-card" onClick={() => go('service')}><div className="action-card-icon orange"><IconService /></div><b>Service & AMC Automation</b><div className="statusline">Installed base, service history, engineer assignment</div></div>
+          <div className="action-card" onClick={() => go('askai')}><div className="action-card-icon purple"><IconAskAI /></div><b>AI Knowledge Assistant</b><div className="statusline">Search manuals, SOPs, catalogues and warranty information</div></div>
+          <div className="action-card" onClick={() => go('customers')}><div className="action-card-icon blue"><IconCustomers /></div><b>Customer 360</b><div className="statusline">Accounts, open enquiries, active orders and installed base</div></div>
+          <div className="action-card" onClick={() => showToast('Integration demo: ERP, Tally, CRM, email and Excel connectors can be added during a pilot.')}><div className="action-card-icon teal"><IconPlug /></div><b>ERP / Excel Integration</b><div className="statusline">Keep existing systems and automate the gaps around them</div></div>
         </div>
       </div>
     </section>

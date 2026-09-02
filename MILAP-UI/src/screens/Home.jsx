@@ -1,12 +1,13 @@
 import React from 'react';
 import logoBrand from '../assets/MILAP_LOGO.png';
 import logoIcon from '../assets/MILAP_LOGO.png';
+import { IconFactory, IconTruckLine, IconGradCap, IconBuilding, IconLayers, IconHandshake } from '../components/icons.jsx';
 
 const INDUSTRIES = [
-  { key: 'manufacturing', icon: '🏭', name: 'Manufacturing', desc: 'Enquiries, quotations, orders, installed assets and service.', live: true },
-  { key: 'transport', icon: '🚚', name: 'Transport', desc: 'Fleet, shipments, routes and logistics billing.', live: false },
-  { key: 'education', icon: '🎓', name: 'Education', desc: 'Admissions, courses, students and fee management.', live: false },
-  { key: 'realestate', icon: '🏢', name: 'Real Estate', desc: 'Properties, leads, site visits and bookings.', live: false },
+  { key: 'manufacturing', icon: IconFactory, name: 'Manufacturing', desc: 'Enquiries, quotations, orders, installed assets and service.', live: true },
+  { key: 'transport', icon: IconTruckLine, name: 'Transport', desc: 'Fleet, shipments, routes and logistics billing.', live: false },
+  { key: 'education', icon: IconGradCap, name: 'Education', desc: 'Admissions, courses, students and fee management.', live: false },
+  { key: 'realestate', icon: IconBuilding, name: 'Real Estate', desc: 'Properties, leads, site visits and bookings.', live: false },
 ];
 
 export default function Home({ onSignIn }) {
@@ -42,7 +43,7 @@ export default function Home({ onSignIn }) {
 
       <section id="home-pillars" className="home-pillars">
         <div className="home-pillar card">
-          <div className="home-pillar-icon">⚙️</div>
+          <div className="home-pillar-icon home-pillar-icon-blue"><IconLayers /></div>
           <h2>Industry Workspaces</h2>
           <p className="sub">
             Every client gets the screens their industry actually runs on — enquiries, quotations, orders,
@@ -50,7 +51,7 @@ export default function Home({ onSignIn }) {
           </p>
         </div>
         <div className="home-pillar card">
-          <div className="home-pillar-icon">🤝</div>
+          <div className="home-pillar-icon home-pillar-icon-orange"><IconHandshake /></div>
           <h2>Connect</h2>
           <p className="sub">
             Discover and connect with companies in other industries that can help your business grow —
@@ -66,7 +67,7 @@ export default function Home({ onSignIn }) {
         <div className="grid four home-industries-grid">
           {INDUSTRIES.map((ind) => (
             <div className="card home-industry-card" key={ind.key}>
-              <div className="home-industry-icon">{ind.icon}</div>
+              <div className={`home-industry-icon${ind.live ? ' live' : ''}`}><ind.icon /></div>
               <b>{ind.name}</b>
               <p className="sub">{ind.desc}</p>
               {ind.live
