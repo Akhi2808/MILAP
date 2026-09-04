@@ -1,4 +1,8 @@
-const BASE_URL = 'http://localhost:8080/api';
+// In dev, Vite proxies /api to the local Spring Boot server (see vite.config.js).
+// In prod, Nginx proxies /api to the backend on the same origin — so a relative
+// path works in both cases without hardcoding a host. Override via VITE_API_BASE_URL
+// only if the API is ever served from a different origin than the UI.
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {
