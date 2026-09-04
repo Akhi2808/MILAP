@@ -9,7 +9,7 @@ services:
       MYSQL_PASSWORD: milap
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3306:3306"
     volumes:
       - milap-mysql-data:/var/lib/mysql
 
