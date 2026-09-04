@@ -6,8 +6,8 @@ services:
     environment:
       MYSQL_DATABASE: milap
       MYSQL_USER: milap
-      MYSQL_PASSWORD: milap
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-milap}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
     ports:
       - "127.0.0.1:3306:3306"
     volumes:
